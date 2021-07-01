@@ -111,13 +111,13 @@ public class NestedScrollableHost extends FrameLayout {
     public NestedScrollableHost(Context context) {
         super(context);
         ViewConfiguration var10001 = ViewConfiguration.get(this.getContext());
-        this.touchSlop = var10001.getScaledTouchSlop();
+        this.touchSlop = var10001.getScaledTouchSlop()+3;
     }
 
     public NestedScrollableHost(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         ViewConfiguration var10001 = ViewConfiguration.get(this.getContext());
-        this.touchSlop = var10001.getScaledTouchSlop();
+        this.touchSlop = var10001.getScaledTouchSlop()+3;
     }
 
     public View _$_findCachedViewById(int var1) {

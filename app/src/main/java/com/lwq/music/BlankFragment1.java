@@ -25,15 +25,17 @@ public class BlankFragment1 extends Fragment {
     private LinearLayout indicatorContainer;
     private int lastPosition=500;
     private Handler mHandler=new Handler();
+    private ArrayList<Integer> idList;
 
     public BlankFragment1() {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment1 newInstance(ArrayList<String>text,ArrayList<Bitmap> images) {
+    public static BlankFragment1 newInstance(ArrayList<String>text,ArrayList<Bitmap> images,ArrayList<Integer> idList) {
         BlankFragment1 fragment = new BlankFragment1();
         fragment.t_data = text;
         fragment.b_data = images;
+        fragment.idList=idList;
         return fragment;
     }
 
@@ -51,12 +53,9 @@ public class BlankFragment1 extends Fragment {
         }
         indicatorContainer=rootView.findViewById(R.id.container_indicator);
         vp_banner=rootView.findViewById(R.id.banner_viewpage2);
-        BannerAdapter adapter=new BannerAdapter(b_data,t_data);
+        BannerAdapter adapter=new BannerAdapter(b_data,t_data,idList);
         NestedScrollableHost nsh=rootView.findViewById(R.id.banner_container);
-        nsh.setOnClickListener(v -> {
-            Log.e("asdfjnaowejnf","aosdfoinaweon");
-            Toast.makeText(getContext(),"asdifbwiae",Toast.LENGTH_LONG);
-        });
+
         vp_banner.setAdapter(adapter);
         init_vp();
         return rootView;

@@ -18,12 +18,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder> {
+    ArrayList<Integer> id_data;
     ArrayList<Bitmap> b_data;
     ArrayList<String> t_data;
 
-    public BannerAdapter(ArrayList<Bitmap> b_data, ArrayList<String> t_data) {
+    public BannerAdapter(ArrayList<Bitmap> b_data, ArrayList<String> t_data,ArrayList<Integer> ids ) {
         this.b_data = b_data;
         this.t_data = t_data;
+        id_data=ids;
     }
 
     @NonNull
@@ -38,6 +40,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
         position=position%Math.min(t_data.size(),b_data.size());
         holder.textView.setText(t_data.get(position));
         holder.imageView.setImageBitmap(b_data.get(position));
+        holder.id=id_data.get(position);
     }
 
     @Override
@@ -46,13 +49,14 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+        Integer id;
         ImageView imageView;
         TextView textView;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.banner_image);
             textView=itemView.findViewById(R.id.banner_tv);
-            imageView.setOnClickListener(v -> Log.e("asdfnawe","sadafwef"));
+            imageView.setOnClickListener(v -> Log.e("asdfnawe",""+this.id));
         }
     }
 

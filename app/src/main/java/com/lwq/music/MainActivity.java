@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Fragment> frameLayoutList = new ArrayList<>();
     ArrayList<String> tv_data=new ArrayList<>();
     ArrayList<Bitmap> iv_data=new ArrayList<>();
+    ArrayList<Integer> idList=new ArrayList<>();
     RelativeLayout rl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +45,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init_fragment() {
+        idList.add(1);
+        idList.add(2);
+        idList.add(3);
         tv_data.add("新歌首发");
         tv_data.add("独家");
         tv_data.add("全新专辑");
         iv_data.add(BitmapFactory.decodeFile("src/main/res/mipmap-hdpi/banner.jpg"));
         iv_data.add(BitmapFactory.decodeFile("src/main/res/mipmap-hdpi/banner.jpg"));
         iv_data.add(BitmapFactory.decodeFile("src/main/res/mipmap-hdpi/banner.jpg"));
-        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data));
-        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data));
-        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data));
+        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
+        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
+        frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
         vp_home = findViewById(R.id.vp_home);
         MyFragmentAdapter myFragmentAdapter = new MyFragmentAdapter(getSupportFragmentManager(), getLifecycle(), frameLayoutList);
         vp_home.setAdapter(myFragmentAdapter);
