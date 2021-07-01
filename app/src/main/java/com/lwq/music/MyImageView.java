@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 @SuppressLint("AppCompatCustomView")
 public class MyImageView extends ImageView {
     private static float x1, x2, y1, y2;
+    private int mLastX;
+    private int mLastY;
+    private int x;
 
     public MyImageView(Context context) {
         super(context);
@@ -32,6 +35,33 @@ public class MyImageView extends ImageView {
     }
 
 //    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN: {
+//                mLastX = (int) event.getX();
+//                mLastY = (int) event.getY();
+//                // 禁止parent拦截down事件
+//                getParent().requestDisallowInterceptTouchEvent(false);
+//                break;
+//            }
+//            case MotionEvent.ACTION_MOVE: {
+//                getParent().requestDisallowInterceptTouchEvent(true);
+//                break;
+//            }
+//            case MotionEvent.ACTION_UP: {
+////                int deltaX = (int) event.getX() - mLastX;
+////                int deltaY = (int) event.getX() - mLastY;
+////                if (deltaX<5&&deltaY<5) { // 根据需求条件来决定是否让Parent View拦截事件。
+////                    getParent().requestDisallowInterceptTouchEvent(false);
+////                }
+//                break;
+//            }
+//            default:
+//                break;
+//        }
+//
+//        return super.dispatchTouchEvent(event);
+//    }
 //    public boolean onTouchEvent(MotionEvent event) {
 //
 //
