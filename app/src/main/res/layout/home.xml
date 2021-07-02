@@ -8,46 +8,52 @@
     tools:context=".BlankFragment1">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
-
-        <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp">
+            android:layout_height="150dp">
 
-            <com.lwq.music.NestedScrollableHost
-                android:id="@+id/banner_container"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <com.lwq.music.NestedScrollableHost
+                    android:id="@+id/banner_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/banner_viewpage2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </com.lwq.music.NestedScrollableHost>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/container_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                >
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/banner_viewpage2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.lwq.music.NestedScrollableHost>
-
-
-        </androidx.cardview.widget.CardView>
-
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal" />
+        </RelativeLayout>
         <LinearLayout
-            android:id="@+id/container_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:orientation="horizontal" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
 
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </FrameLayout>

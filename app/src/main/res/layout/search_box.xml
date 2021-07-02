@@ -23,7 +23,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
             android:layout_toLeftOf="@+id/edt_search"
-            android:background="@mipmap/search_gray" />
+            android:background="@drawable/img_search_gray" />
 
         <EditText
             android:id="@+id/edt_search"

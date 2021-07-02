@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network_security_config xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--明文通信被禁止，导致http协议通信报错，此处禁止明文通信检测-->
-    <base-config cleartextTrafficPermitted="true"/>
-</network_security_config>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+    </domain-config>
+</network-security-config>
