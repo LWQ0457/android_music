@@ -20,5 +20,9 @@
     <string name="navigation_bar_2">发现</string>
     <string name="navigation_bar_3">我的</string>
     <string name="banner_flag">新歌首发</string>
+    <string name="center_box_1">本地</string>
+    <string name="center_box_2">下载</string>
+    <string name="center_box_3">最近</string>
+    <string name="center_box_4">喜欢</string>
 
 </resources>
