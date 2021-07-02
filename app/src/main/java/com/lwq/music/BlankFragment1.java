@@ -12,21 +12,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 public class BlankFragment1 extends Fragment {
-    RelativeLayout rl;
-    View rootView;
-    ArrayList<String> t_data = new ArrayList<>();
-    ArrayList<Bitmap> b_data = new ArrayList<>();
-    ViewPager2 vp_banner;
+    private View rootView;
+    private ArrayList<String> t_data = new ArrayList<>();
+    private ArrayList<Bitmap> b_data = new ArrayList<>();
+    private ViewPager2 vp_banner;
     private LinearLayout indicatorContainer;
     private int lastPosition=500;
     private Handler mHandler=new Handler();
     private ArrayList<Integer> idList;
-
+    private NestedScrollableHost nsh;
     public BlankFragment1() {
     }
 
@@ -38,7 +38,16 @@ public class BlankFragment1 extends Fragment {
         fragment.idList=idList;
         return fragment;
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.postDelayed(runnable,5000);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeCallbacks(runnable);
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,27 +60,24 @@ public class BlankFragment1 extends Fragment {
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.home, container, false);
         }
+        //轮播图视图初始化
+        init_view();
+        return rootView;
+    }
+    private void init_view() {
         indicatorContainer=rootView.findViewById(R.id.container_indicator);
         vp_banner=rootView.findViewById(R.id.banner_viewpage2);
         BannerAdapter adapter=new BannerAdapter(b_data,t_data,idList);
-        NestedScrollableHost nsh=rootView.findViewById(R.id.banner_container);
-
+        nsh=rootView.findViewById(R.id.banner_container);
         vp_banner.setAdapter(adapter);
-        init_vp();
-        return rootView;
-    }
-
-    private void init_vp() {
-
+        //设置轮播图指示点
         for(int i = 0; i < t_data.size(); i++){
             ImageView imageView = new ImageView(getContext());
             if (i == 0) imageView.setBackgroundResource(R.drawable.banner_point2);
             else imageView.setBackgroundResource(R.drawable.banner_point);
-            //为指示点添加间距
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMarginEnd(5);
             imageView.setLayoutParams(layoutParams);
-            //将指示点添加进容器
             indicatorContainer.addView(imageView);
         }
         vp_banner.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -99,17 +105,4 @@ public class BlankFragment1 extends Fragment {
             mHandler.postDelayed(runnable,5000);
         }
     };
-    @Override
-    public void onResume() {
-        super.onResume();
-        mHandler.postDelayed(runnable,5000);
-    }
-
-    /* 当应用被暂停时，让轮播图停止轮播 */
-    @Override
-    public void onPause() {
-        super.onPause();
-        mHandler.removeCallbacks(runnable);
-    }
-
 }

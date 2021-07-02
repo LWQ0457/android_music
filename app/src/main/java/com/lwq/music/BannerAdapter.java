@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,14 +51,18 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder{
         Integer id;
+        RelativeLayout banner_box;
         ImageView imageView;
         TextView textView;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
+            banner_box=itemView.findViewById(R.id.banner_box);
             imageView=itemView.findViewById(R.id.banner_image);
             textView=itemView.findViewById(R.id.banner_tv);
-            imageView.setOnClickListener(v -> Log.e("asdfnawe",""+this.id));
+            banner_box.setOnClickListener(v -> {
+                Log.e("asdfnawe", "" + this.id);
+                Toast.makeText(itemView.getContext(),"点击了轮播图",Toast.LENGTH_SHORT).show();
+            });
         }
     }
-
 }
