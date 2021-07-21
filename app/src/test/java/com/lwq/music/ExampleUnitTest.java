@@ -1,5 +1,9 @@
 package com.lwq.music;
 
+import android.util.Log;
+
+import com.lwq.music.utils.OkHttpUtil;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,5 +17,8 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void httpTest(){
     }
 }

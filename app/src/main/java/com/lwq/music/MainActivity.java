@@ -20,6 +20,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.lwq.music.utils.OkHttpUtil;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,12 +50,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
         //初始化状态
 
+
     }
 
     private void init_toolbar() {
     }
 
     private void init_fragment() {
+        dataInit();
+        viewPageInit();
+
+
+    }
+    private void dataInit(){
         idList.add(1);
         idList.add(2);
         idList.add(3);
@@ -66,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
         frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
         frameLayoutList.add(BlankFragment1.newInstance(tv_data,iv_data,idList));
+    }
+    private void viewPageInit(){
         vp_home = findViewById(R.id.vp_home);
         MyFragmentAdapter myFragmentAdapter = new MyFragmentAdapter(getSupportFragmentManager(), getLifecycle(), frameLayoutList);
         vp_home.setAdapter(myFragmentAdapter);
@@ -88,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
     private void change(int position) {
         icurrent.setSelected(false);
         tcurrent.setTextColor(Color.BLACK);
